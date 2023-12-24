@@ -1,0 +1,18 @@
+# this config is written for Otus assignment on Linux Basic Network topic.
+network:
+  renderer: networkd # networkd is a default for now, but who knows all posibilities
+  ethernets:
+    eth0:
+      dhcp4: true
+      dhcp4-overrides:
+        use-dns: false # Ignore the router's DNS, use specified below
+      addresses: # this machine bouned with 192.168.1.8 by MAC in the router's settings
+        - 192.168.1.10/24 # One more IP address just to fulfil the task
+      routes: # DHCP gives these anyway, but I bound to use then according to the task
+        - to: default
+          via: 192.168.1.1 # My router's gateway
+      nameservers:
+        addresses:
+          - 8.8.8.8 # Google DNS
+          - 8.8.4.4 # Google DNS
+  version: 2

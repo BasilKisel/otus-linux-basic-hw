@@ -1,0 +1,4 @@
+total 12
+drwxr-xr-x  2 root root 4096 Dec 24 17:06 ./
+drwxr-xr-x 97 root root 4096 Dec 23 20:15 ../
+lrwxrwxrwx  1 root root   66 Dec 24 17:06 otus_netplan_conf.yaml -> /home/kisel_vs/otus-linux-basic-hw/hw-network/hw_netwlan_conf.yaml
