@@ -24,6 +24,8 @@ apt-get install -y mysql-server-8.0
 
 # CHANGE CONFIG FILES AND RESTART THIS REPLICA AS A SOURCE
 
+systemctl stop mysql
+
 MYSQLD_CNF_PATH="/etc/mysql/mysql.conf.d/mysqld.cnf"
 
 for cnf_bcp in "$MYSQLD_CNF_PATH"{1..999}
@@ -39,6 +41,8 @@ cp ./mysqld_source.cnf "$MYSQLD_CNF_PATH"
 
 systemctl restart mysql.service
 cat /var/log/mysql/error.log | grep -s -e "err" -e "warn"
+
+mysql -e "STOP REPLICA"
 
 
 # CREATE replica USER
@@ -64,11 +68,30 @@ EOF
 # RESTORE SOURCE'S DATABASE IN THIS REPLICA
 
 mysql <<EOF
-CHANGE MASTER TO MASTER_USER = '$REPL_USR_NAME', MASTER_PASSWORD = '$REPL_USR_PASS', GET_MASTER_PUBLIC_KEY = 1;
+CHANGE MASTER TO MASTER_USER = '$REPL_USR_NAME', MASTER_PASSWORD = '$REPL_USR_PASS', GET_MASTER_PUBLIC_KEY = 1, MASTER_HOST='$MYSQL_SRC_IP';
 EOF
 
+# For unknown reasons there is no way to exclude system databases from dumping.
+# These DBs cannot be restored at replica:
+# 'mysql','information_schema','performance_schema','sys'
+
 # https://dev.mysql.com/doc/refman/8.0/en/mysqldump.html#mysqldump-replication-options
-mysqldump --user="$BCP_USR_NAME" --password="$BCP_USR_PASS" --host="$MYSQL_SRC_IP" --source-data=1 --include-master-host-port --set-gtid-purged=ON --all-databases --triggers --routines --events --add-drop-database | mysql
+mysql --user="$BCP_USR_NAME" \
+      --password="$BCP_USR_PASS" \
+      --host="$MYSQL_SRC_IP" \
+      --batch --skip-column-names -e "SELECT db.schema_name AS db FROM information_schema.schemata AS db WHERE db.schema_name NOT IN ('mysql','information_schema','performance_schema','sys')" \
+  | xargs mysqldump \
+      --user="$BCP_USR_NAME" \
+      --password="$BCP_USR_PASS" \
+      --host="$MYSQL_SRC_IP" \
+      --source-data=1 \
+      --set-gtid-purged=ON \
+      --triggers \
+      --routines \
+      --events \
+      --add-drop-database \
+      --databases \
+  | mysql
 
 
 # CONVERT THIS MYSQL INSTANCE INTO A REPLICA
@@ -89,5 +112,5 @@ cat /var/log/mysql/error.log | grep -s -e "err" -e "warn"
 
 mysql << EOF
 START REPLICA;
-SHOW REPLICA STATUS;
+SHOW REPLICA STATUS\G
 EOF
