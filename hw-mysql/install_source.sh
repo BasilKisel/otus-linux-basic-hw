@@ -59,6 +59,6 @@ EOF
 mysql <<EOF
 DROP DATABASE IF EXISTS test_db;
 CREATE DATABASE test_db;
-CREATE TABLE test_db.mytbl (foo INT NOT NULL);
-INSERT INTO test_db.mytbl (foo) VALUES (1), (2), (3);
+CREATE TABLE test_db.mytbl (foo VARCHAR(100) NOT NULL);
+INSERT INTO test_db.mytbl (foo) VALUES ('1'), ('2'), ('3');
 EOF
