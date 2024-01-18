@@ -4,6 +4,6 @@
 
 for i in {1..999}
 do
-    mysql --batch --skip-column-names -e "select foo from test_db.mytbl order by foo desc limit 1"
+	mysql --batch --skip-column-names -e "SELECT foo FROM test_db.mytbl ORDER BY LENGTH(foo) DESC, foo DESC LIMIT 1"
     sleep 1
 done
