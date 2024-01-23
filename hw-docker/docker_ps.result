@@ -1,0 +1,2 @@
+CONTAINER ID   IMAGE         COMMAND                  CREATED          STATUS          PORTS                                   NAMES
+29b40dbf2b1d   my-nginx-fe   "/docker-entrypoint.…"   35 seconds ago   Up 35 seconds   0.0.0.0:8085->80/tcp, :::8085->80/tcp   my-nginx-balancer
