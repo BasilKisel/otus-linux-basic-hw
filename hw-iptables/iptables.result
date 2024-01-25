@@ -1,7 +1,9 @@
 Chain INPUT (policy DROP)
 target     prot opt source               destination         
 ACCEPT     all  --  localhost            localhost           
-ACCEPT     tcp  --  anywhere             anywhere             multiport dports http,ssh,https,mysql,tproxy
+ACCEPT     all  --  anywhere             anywhere             ctstate RELATED,ESTABLISHED
+ACCEPT     tcp  --  anywhere             anywhere             multiport dports http,ssh,https,domain,domain-s,mysql,tproxy
+ACCEPT     udp  --  anywhere             anywhere             udp dpt:domain
 
 Chain FORWARD (policy DROP)
 target     prot opt source               destination         
