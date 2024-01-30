@@ -1,0 +1,133 @@
+NAME="Rocky Linux"
+VERSION="9.3 (Blue Onyx)"
+ID="rocky"
+ID_LIKE="rhel centos fedora"
+VERSION_ID="9.3"
+PLATFORM_ID="platform:el9"
+PRETTY_NAME="Rocky Linux 9.3 (Blue Onyx)"
+ANSI_COLOR="0;32"
+LOGO="fedora-logo-icon"
+CPE_NAME="cpe:/o:rocky:rocky:9::baseos"
+HOME_URL="https://rockylinux.org/"
+BUG_REPORT_URL="https://bugs.rockylinux.org/"
+SUPPORT_END="2032-05-31"
+ROCKY_SUPPORT_PRODUCT="Rocky-Linux-9"
+ROCKY_SUPPORT_PRODUCT_VERSION="9.3"
+REDHAT_SUPPORT_PRODUCT="Rocky Linux"
+REDHAT_SUPPORT_PRODUCT_VERSION="9.3"
+
+
+
+
+
+./install-clickhouse-postgres.sh: Downloading  clickhouse-client-23.9.6.20.x86_64.rpm
+
+
+
+
+
+./install-clickhouse-postgres.sh: Downloading  clickhouse-common-static-23.9.6.20.x86_64.rpm
+
+
+
+
+
+./install-clickhouse-postgres.sh: Downloading  clickhouse-server-23.9.6.20.x86_64.rpm
+
+
+
+
+
+./install-clickhouse-postgres.sh: Installing Clickhouse
+ClickHouse binary is already located at /usr/bin/clickhouse
+Symlink /usr/bin/clickhouse-server already exists but it points to /clickhouse. Will replace the old symlink to /usr/bin/clickhouse.
+Creating symlink /usr/bin/clickhouse-server to /usr/bin/clickhouse.
+Symlink /usr/bin/clickhouse-client already exists but it points to /clickhouse. Will replace the old symlink to /usr/bin/clickhouse.
+Creating symlink /usr/bin/clickhouse-client to /usr/bin/clickhouse.
+Symlink /usr/bin/clickhouse-local already exists but it points to /clickhouse. Will replace the old symlink to /usr/bin/clickhouse.
+Creating symlink /usr/bin/clickhouse-local to /usr/bin/clickhouse.
+Symlink /usr/bin/clickhouse-benchmark already exists but it points to /clickhouse. Will replace the old symlink to /usr/bin/clickhouse.
+Creating symlink /usr/bin/clickhouse-benchmark to /usr/bin/clickhouse.
+Symlink /usr/bin/clickhouse-copier already exists but it points to /clickhouse. Will replace the old symlink to /usr/bin/clickhouse.
+Creating symlink /usr/bin/clickhouse-copier to /usr/bin/clickhouse.
+Symlink /usr/bin/clickhouse-obfuscator already exists but it points to /clickhouse. Will replace the old symlink to /usr/bin/clickhouse.
+Creating symlink /usr/bin/clickhouse-obfuscator to /usr/bin/clickhouse.
+Symlink /usr/bin/clickhouse-compressor already exists but it points to /clickhouse. Will replace the old symlink to /usr/bin/clickhouse.
+Creating symlink /usr/bin/clickhouse-compressor to /usr/bin/clickhouse.
+Symlink /usr/bin/clickhouse-format already exists but it points to /clickhouse. Will replace the old symlink to /usr/bin/clickhouse.
+Creating symlink /usr/bin/clickhouse-format to /usr/bin/clickhouse.
+Symlink /usr/bin/clickhouse-extract-from-config already exists but it points to /clickhouse. Will replace the old symlink to /usr/bin/clickhouse.
+Creating symlink /usr/bin/clickhouse-extract-from-config to /usr/bin/clickhouse.
+Symlink /usr/bin/clickhouse-keeper already exists but it points to /clickhouse. Will replace the old symlink to /usr/bin/clickhouse.
+Creating symlink /usr/bin/clickhouse-keeper to /usr/bin/clickhouse.
+Symlink /usr/bin/clickhouse-keeper-converter already exists but it points to /clickhouse. Will replace the old symlink to /usr/bin/clickhouse.
+Creating symlink /usr/bin/clickhouse-keeper-converter to /usr/bin/clickhouse.
+Creating clickhouse group if it does not exist.
+ groupadd -r clickhouse
+Creating clickhouse user if it does not exist.
+ useradd -r --shell /bin/false --home-dir /nonexistent -g clickhouse clickhouse
+Will set ulimits for clickhouse user in /etc/security/limits.d/clickhouse.conf.
+Config file /etc/clickhouse-server/config.xml already exists, will keep it and extract path info from it.
+/etc/clickhouse-server/config.xml has /var/lib/clickhouse/ as data path.
+/etc/clickhouse-server/config.xml has /var/log/clickhouse-server/ as log path.
+Users config file /etc/clickhouse-server/users.xml already exists, will keep it and extract users info from it.
+Log directory /var/log/clickhouse-server/ already exists.
+Data directory /var/lib/clickhouse/ already exists.
+Pid directory /var/run/clickhouse-server already exists.
+ chown -R clickhouse:clickhouse '/var/log/clickhouse-server/'
+ chown -R clickhouse:clickhouse '/var/run/clickhouse-server'
+ chown  clickhouse:clickhouse '/var/lib/clickhouse/'
+ groupadd -r clickhouse-bridge
+ useradd -r --shell /bin/false --home-dir /nonexistent -g clickhouse-bridge clickhouse-bridge
+ chown -R clickhouse-bridge:clickhouse-bridge '/usr/bin/clickhouse-odbc-bridge'
+ chown -R clickhouse-bridge:clickhouse-bridge '/usr/bin/clickhouse-library-bridge'
+[1mPassword for default user is already specified. To remind or reset, see /etc/clickhouse-server/users.xml and /etc/clickhouse-server/users.d.[0m
+Setting capabilities for clickhouse binary. This is optional.
+ chown -R clickhouse:clickhouse '/etc/clickhouse-server'
+
+ClickHouse has been successfully installed.
+
+Start clickhouse-server with:
+ sudo clickhouse start
+
+Start clickhouse-client with:
+ clickhouse-client --password
+
+
+
+
+
+
+./install-clickhouse-postgres.sh: Removing ClickHouse
+
+
+
+
+
+./install-clickhouse-postgres.sh: Backed up '/etc/yum.repos.d/postgres16-pgdg-repo.repo' to '/etc/yum.repos.d/.postgres16-pgdg-repo.repo.bac.4'
+./install-clickhouse-postgres.sh: Backed up '/etc/pki/rpm-gpg/PGDG-RPM-GPG-KEY-RHEL' to '/etc/pki/rpm-gpg/.PGDG-RPM-GPG-KEY-RHEL.bac.7'
+./install-clickhouse-postgres.sh: Installing PostgreSQL 16
+
+Installed:
+  lz4-1.9.3-5.el9.x86_64                                                        
+  postgresql16-16.1-2PGDG.rhel9.x86_64                                          
+  postgresql16-libs-16.1-2PGDG.rhel9.x86_64                                     
+
+
+
+
+
+
+./install-clickhouse-postgres.sh: Removing PostgreSQL 16
+
+Removed:
+  lz4-1.9.3-5.el9.x86_64                                                        
+  postgresql16-16.1-2PGDG.rhel9.x86_64                                          
+  postgresql16-libs-16.1-2PGDG.rhel9.x86_64                                     
+
+
+
+
+
+
+./install-clickhouse-postgres.sh: all done
