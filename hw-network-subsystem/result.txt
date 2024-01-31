@@ -1,0 +1,49 @@
+
+This script sets static IPs and NDS with nmcli for ETH0.
+Then reverts to the defaults.
+
+
+Current IP, DNS config:
+
+ipv4.addresses:                         --
+ipv4.dns:                               --
+ipv4.method:                            auto
+IP4.ADDRESS[1]:                         192.168.1.10/24
+IP4.DNS[1]:                             192.168.1.1
+Changing configuration...
+Connection successfully reapplied to device 'eth0'.
+
+Check changes:
+
+ipv4.addresses:                         192.168.1.11/24, 192.168.1.12/24
+ipv4.dns:                               77.88.8.8,77.88.8.1
+ipv4.method:                            manual
+IP4.ADDRESS[1]:                         192.168.1.12/24
+IP4.ADDRESS[2]:                         192.168.1.11/24
+IP4.DNS[1]:                             77.88.8.8
+IP4.DNS[2]:                             77.88.8.1
+2: eth0: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc mq state UP group default qlen 1000
+    link/ether 00:15:5d:01:37:0d brd ff:ff:ff:ff:ff:ff
+    inet 192.168.1.11/24 brd 192.168.1.255 scope global noprefixroute eth0
+       valid_lft forever preferred_lft forever
+    inet 192.168.1.12/24 brd 192.168.1.255 scope global secondary noprefixroute eth0
+       valid_lft forever preferred_lft forever
+    inet6 fe80::215:5dff:fe01:370d/64 scope link tentative noprefixroute 
+       valid_lft forever preferred_lft forever
+Reverting changes:
+Connection successfully reapplied to device 'eth0'.
+
+Check defaults:
+
+ipv4.addresses:                         --
+ipv4.dns:                               --
+ipv4.method:                            auto
+IP4.ADDRESS[1]:                         192.168.1.10/24
+IP4.DNS[1]:                             192.168.1.1
+2: eth0: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc mq state UP group default qlen 1000
+    link/ether 00:15:5d:01:37:0d brd ff:ff:ff:ff:ff:ff
+    inet 192.168.1.10/24 brd 192.168.1.255 scope global dynamic noprefixroute eth0
+       valid_lft 25200sec preferred_lft 25200sec
+    inet6 fe80::215:5dff:fe01:370d/64 scope link tentative noprefixroute 
+       valid_lft forever preferred_lft forever
+All done.
