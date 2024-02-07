@@ -10,6 +10,9 @@ target_dir='/var/nfs_data/www-data'
 wp_config_path="$target_dir/wordpress/wp-config.php"
 wp_sample_config_path="$target_dir/wordpress/wp-config-sample.php"
 wp_def_config='./wp-config.php'
+qc_page_src='hello.php'
+qc_page_trg="$target_dir/wordpress/hello.php"
+
 
 
 # Get Wordpress into NFS share
@@ -22,3 +25,7 @@ tar xzf "$wp_file_tgz" -C "$target_dir/" --skip-old-files
 
 [ -e "$wp_config_path" ] || cp "$wp_def_config" "$wp_config_path"
 [ ! -e "$wp_sample_config_path" ] || rm "$wp_sample_config_path"
+
+
+# Create quick check page
+mv "$qc_page_src" "$qc_page_trg"
