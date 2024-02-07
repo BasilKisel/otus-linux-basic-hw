@@ -4,9 +4,9 @@
 # It opens /var/nfs_data/www-data for read-write access to 192.168.1.8
 # Thanx to https://www.youtube.com/watch?v=-6UIi-LIABk
 
-wwwdir=/var/nfs_data/www-data
-export_path=/etc/exports
-new_exports=./exports
+wwwdir='/var/nfs_data/www-data'
+export_path='/etc/exports'
+new_exports='./nfs.conf/exports'
 
 
 # Checks

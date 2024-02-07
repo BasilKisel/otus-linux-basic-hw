@@ -9,8 +9,8 @@ wp_file_tgz='./wordpress-6.4.3.tar.gz'
 target_dir='/var/nfs_data/www-data'
 wp_config_path="$target_dir/wordpress/wp-config.php"
 wp_sample_config_path="$target_dir/wordpress/wp-config-sample.php"
-wp_def_config='./wp-config.php'
-qc_page_src='hello.php'
+wp_def_config='./wp.conf/wp-config.php'
+qc_page_src='./wp.conf/hello.php'
 qc_page_trg="$target_dir/wordpress/hello.php"
 
 
