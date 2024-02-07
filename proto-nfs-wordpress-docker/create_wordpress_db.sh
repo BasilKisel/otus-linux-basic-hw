@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/bash -e
 
 # This script creates database for Wordpress CMS.
 
@@ -10,7 +10,7 @@ db_name='wordpress_db'
 # Create wordpress database
 
 mysql <<EOF
-CREATE DATABASE IF NOT EXISTS $dbname
+CREATE DATABASE IF NOT EXISTS $db_name
     CHARACTER SET = utf8mb4
     COLLATE = utf8mb4_general_ci
 ;
@@ -22,7 +22,7 @@ EOF
 mysql <<EOF
 CREATE USER IF NOT EXISTS $usr_name@'%' IDENTIFIED WITH 'caching_sha2_password' BY '$usr_pass'
 ;
-GRANT ALL PRIVILESGES ON $db_name.* TO $usr_name@'%'
+GRANT ALL PRIVILEGES ON $db_name.* TO $usr_name@'%'
 ;
 EOF
 
