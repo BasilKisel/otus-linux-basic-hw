@@ -7,11 +7,11 @@
 wp_tgz_url='https://wordpress.org/wordpress-6.4.3.tar.gz'
 wp_file_tgz='./wordpress-6.4.3.tar.gz'
 target_dir='/var/nfs-data/www-data/wordpress-6.4.3'
-wp_config_path="$target_dir/wordpress-6.4.3/wordpress/wp-config.php"
-wp_sample_config_path="$target_dir/wordpress-6.4.3/wordpress/wp-config-sample.php"
-wp_def_config='./wp.conf/wp-config.php'
-qc_page_src='./wp.conf/hello.php'
-qc_page_trg="$target_dir/wordpress-6.4.3/wordpress/hello.php"
+wp_config_path="$target_dir/wordpress/wp-config.php"
+wp_sample_config_path="$target_dir/wordpress/wp-config-sample.php"
+wp_def_config='./wordpress/wp-config.php'
+qc_page_src='./wordpress/hello.php'
+qc_page_trg="$target_dir/wordpress/hello.php"
 
 
 
