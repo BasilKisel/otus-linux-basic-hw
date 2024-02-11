@@ -5,7 +5,7 @@
 
 
 share_local_dir='/var/www-data'
-share_remote_dir='/var/nfs_data/www-data'
+share_remote_dir='/var/nfs-data/www-data'
 share_ip='192.168.1.9'
 
 
