@@ -20,7 +20,8 @@ EOF
 # Create wordpress user
 
 mysql <<EOF
-CREATE USER IF NOT EXISTS $usr_name@'%' IDENTIFIED WITH 'caching_sha2_password' BY '$usr_pass'
+CREATE USER IF NOT EXISTS $usr_name@'%' IDENTIFIED WITH 'sha256_password' BY '$usr_pass'
+    -- 'caching_sha2_password' BY '$usr_pass' -- wp-php-apache-node doesnot support this method
 ;
 GRANT ALL PRIVILEGES ON $db_name.* TO $usr_name@'%'
 ;

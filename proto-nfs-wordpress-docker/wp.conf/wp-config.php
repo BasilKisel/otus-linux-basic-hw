@@ -48,7 +48,7 @@ define( 'DB_COLLATE', 'utf8mb4_general_ci' );
  *
  * @since 2.6.0
  */
-define( 'AUTH_KEY',         '7zFqjtUlTWrFHBGc'
+define( 'AUTH_KEY',         '7zFqjtUlTWrFHBGc' );
 define( 'SECURE_AUTH_KEY',  'nLUx5Nwc4r1xbOhC' );
 define( 'LOGGED_IN_KEY',    '0Dc5t3wDwz2lR58N' );
 define( 'NONCE_KEY',        'QjspkqeUDHskmC5P' );
@@ -79,7 +79,7 @@ $table_prefix = 'wp_';
  *
  * @link https://wordpress.org/documentation/article/debugging-in-wordpress/
  */
-define( 'WP_DEBUG', false );
+define( 'WP_DEBUG', true );
 
 /* Add any custom values between this line and the "stop editing" line. */
 
