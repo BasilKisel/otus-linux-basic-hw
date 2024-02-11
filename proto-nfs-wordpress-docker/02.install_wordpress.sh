@@ -18,6 +18,7 @@ qc_page_trg="$target_dir/wordpress-6.4.3/wordpress/hello.php"
 # Get Wordpress into NFS share
 
 [ -e "$wp_file_tgz" ] || curl -s -o "$wp_file_tgz" "$wp_tgz_url" 
+[ -d "$target_dir" ] || mkdir -p "$target_dir"
 tar xzf "$wp_file_tgz" -C "$target_dir/" --skip-old-files
 
 
