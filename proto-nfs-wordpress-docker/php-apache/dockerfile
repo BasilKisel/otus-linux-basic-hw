@@ -1,0 +1,8 @@
+# Wordpress php configurations.
+# Tnx to https://www.morewordpress.com/which-php-extensions-are-essential-for-wordpress#:~:text=There%20are%20a%20variety%20of,Xml%2C%20Xmlreader%2C%20Xmlrpc%2C%20and%20Zip
+
+FROM php:7.2-apache
+
+RUN docker-php-source extract && docker-php-ext-install calendar ctype exif fileinfo gettext iconv json mbstring pdo pdo_mysql posix session tokenizer mysqli && docker-php-source delete
+
+COPY ./wp_php.ini "$PHP_INI_DIR/php.ini"
