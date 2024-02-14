@@ -3,12 +3,6 @@
 # This script downloads DEB packages into a bootstrap VM image.
 
 
-if [ `id -u` != 0 ]
-then
-    echo "$0: One must be root to start this script."
-    exit 1
-fi
-
 # all nodes
 ## metrics
 apt-get install --download-only -y prometheus-node-exporter
