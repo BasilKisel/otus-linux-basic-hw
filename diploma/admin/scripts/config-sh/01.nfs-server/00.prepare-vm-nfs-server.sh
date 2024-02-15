@@ -12,11 +12,9 @@ fi
 
 # external data storage
 data_mnt_dir='/mnt/prod-data-drive'
-srv_script_dir='nfs-server'
-adm_script_dir="$data_mnt_dir/admin/scripts/config-sh/$srv_script_dir"
 # netplan
 netplan_etc_dir='/etc/netplan'
-netplan_src_path='./01-nfs-netplan-config.yaml'
+netplan_src_path='./cgf/00-nfs-netplan-config.yaml'
 netplan_cfg_name='00-nfs-netplan-config.yaml'
 hostname='nfs-server'
 
@@ -25,18 +23,6 @@ hostname='nfs-server'
 [ -d "$data_mnt_dir" ] || mkdir -p "$data_mnt_dir"
 grep -s -e '/dev/sdb1' /etc/fstab || echo "/dev/sdb1 $data_mnt_dir ext4 rw,suid,dev,exec,auto,user,async,nofail 0 0" >> /etc/fstab
 (mount | grep -s -e '/dev/sdb1') || mount "$data_mnt_dir"
-
-
-# Prepare easy install script
-cp -f -r "$adm_script_dir/" ./
-cat > ./install.sh <<EOF
-#!/bin/bash -e
-pushd "./$srv_script_dir"
-chmod 755 *.sh
-./install_nfs.sh
-popd
-EOF
-chmod 755 ./install.sh
 
 
 # Update network settings

@@ -9,12 +9,12 @@ then
     exit 1
 fi
 
-downloader='_download_packages.sh'
+downloader='./cfg/_download_packages.sh'
 netplan_etc_dir='/etc/netplan'
-netplan_yaml='./99-bootstrap-config.yaml'
+netplan_yaml='./cfg/00-bootstrap-config.yaml'
 hostname='bootstrap'
 
-"./$downloader"
+"$downloader"
 [ ! -e "$netplan_etc_dir/*" ] || rm "$netplan_etc_dir/*"
 cp "$netplan_yaml" "$netplan_etc_dir/"
 netplan apply

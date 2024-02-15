@@ -16,9 +16,9 @@ shr_dbms_bcp_dir="$data_mnt_dir/dbms-bcp"
 shr_web_app_dir="$data_mnt_dir/web-app"
 shr_admin_dir="$data_mnt_dir/admin"
 etc_exports='/etc/exports'
-new_exports='./exports'
+new_exports='./cfg/exports'
 # iptables
-new_ip4rules="./ip4.nfs.rules.sh"
+new_ip4rules="./cfg/_ip4.nfs.rules.sh"
 etc_ip4_rules='/etc/iptables/rules.v4'
 
 
