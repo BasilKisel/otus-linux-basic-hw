@@ -14,7 +14,6 @@ fi
 data_mnt_dir='/mnt/prod-data-drive'
 shr_dbms_bcp_dir="$data_mnt_dir/dbms-bcp"
 shr_web_app_dir="$data_mnt_dir/web-app"
-shr_admin_dir="$data_mnt_dir/admin"
 etc_exports='/etc/exports'
 new_exports='./cfg/exports'
 # iptables
@@ -29,11 +28,9 @@ apt-get -y install nfs-kernel-server
 
 # Prepare shared dirs if they doesnot exist
 
-for shr_dir in "$shr_dbms_bcp_dir" "$shr_web_app_dir" "$shr_admin_dir"
-do
-    [ -d "$shr_dir" ] || mkdir -p "$shr_dir"
-    chown nobody:nogroup "$shr_dir/"
-done
+[ -d "$shr_dbms_bcp_dir" ] || mkdir -p "$shr_dbms_bcp_dir" 
+[ -d  "$shr_web_app_dir" ] || mkdir -p  "$shr_web_app_dir" 
+chown nobody:nogroup  "$shr_web_app_dir"
 
 
 # Configure nfs server
