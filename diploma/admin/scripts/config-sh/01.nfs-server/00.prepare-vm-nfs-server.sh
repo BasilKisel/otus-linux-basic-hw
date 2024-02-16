@@ -27,6 +27,7 @@ grep -s -e '/dev/sdb1' /etc/fstab || echo "/dev/sdb1 $data_mnt_dir ext4 rw,suid,
 
 # Update network settings
 echo "$hostname" > /etc/hostname
+hostname "$hostname"
 rm "$netplan_etc_dir"/* || true
 cp "$netplan_src_path" "$netplan_etc_dir/$netplan_cfg_name"
 echo -e "\n\nCHANGING IP\nRECONNECT TO NFS-SERVER'S IP\n\n"
