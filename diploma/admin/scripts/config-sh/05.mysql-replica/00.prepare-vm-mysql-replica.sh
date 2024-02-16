@@ -12,9 +12,9 @@ fi
 
 # netplan
 netplan_etc_dir='/etc/netplan'
-netplan_src_path='./network-cfg/00-mysql-source-netplan-config.yaml'
-netplan_cfg_name='00-mysql-source-netplan-config.yaml'
-hostname='mysql-source'
+netplan_src_path='./network-cfg/00-mysql-replica-netplan-config.yaml'
+netplan_cfg_name='00-mysql-replica-netplan-config.yaml'
+hostname='mysql-replica'
 
 
 # Update network settings

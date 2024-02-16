@@ -11,10 +11,10 @@ fi
 
 
 # mysql-source
-repl_usr_name=replica
-repl_usr_pass=secret
-bcp_usr_name=backup
-bcp_usr_pass=secret
+repl_usr_name='replica'
+repl_usr_pass='secret'
+bcp_usr_name='backup'
+bcp_usr_pass='secret'
 wp_usr_name='wordpress_user'
 wp_usr_pass='secret'
 wp_db_name='wordpress_db'
@@ -41,6 +41,7 @@ do
 done
 
 cp "$mysqld_new_cfg" "$mysqld_cnf_path"
+chmod ugo+r "$mysqld_cnf_path"
 
 systemctl restart mysql.service
 ! grep -s -e "err" -e "warn" "$mysqld_err_log_path"

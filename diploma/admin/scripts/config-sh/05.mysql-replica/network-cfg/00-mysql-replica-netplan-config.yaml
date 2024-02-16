@@ -1,0 +1,10 @@
+# This configuration for mysql-replica VM for Otus Linux Bacis Course.
+# mysql-replica is always at 192.168.1.14
+network:
+  renderer: networkd # networkd is a default for now, but who knows all posibilities
+  ethernets:
+    eth0:
+      dhcp4: true
+      addresses:
+        - 192.168.1.14/24
+  version: 2
