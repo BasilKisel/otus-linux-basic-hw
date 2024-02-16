@@ -23,6 +23,7 @@ host_www_dir="$share_local_dir/wordpress"
 cont_www_dir='/var/www/html'
 host_apache_log_dir='/var/log/apache2'
 cont_apache_log_dir='/var/log/apache2'
+php_image_tar='./docker-images/php-7.2-apache.tar'
 # iptables
 new_ip4rules='./network-cfg/_ip4.web.app.rules.sh'
 etc_ip4_rules='/etc/iptables/rules.v4'
@@ -48,6 +49,7 @@ mount "$share_local_dir"
 
 # Docker
 apt-get -yq install docker.io
+[ -e "$php_image_tar" ] && docker image load -i "$php_image_tar"
 set +e
 docker stop "$cont_name"
 docker rm "$cont_name"
