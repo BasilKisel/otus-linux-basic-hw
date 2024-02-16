@@ -15,15 +15,15 @@ data_mnt_dir='/mnt/prod-data-drive'
 shr_dbms_bcp_dir="$data_mnt_dir/dbms-bcp"
 shr_web_app_dir="$data_mnt_dir/web-app"
 etc_exports='/etc/exports'
-new_exports='./cfg/exports'
+new_exports='./nfs-cfg/exports'
 # iptables
-new_ip4rules="./cfg/_ip4.nfs.rules.sh"
+new_ip4rules="./network-cfg/_ip4.nfs.rules.sh"
 etc_ip4_rules='/etc/iptables/rules.v4'
 
 
 # Install nfs server
 
-apt-get -y install nfs-kernel-server
+apt-get -yq install nfs-kernel-server
 
 
 # Prepare shared dirs if they doesnot exist
@@ -54,6 +54,9 @@ systemctl restart nfs-server
 
 
 # Fortify iptables
-apt-get -y install iptables-persistent
+# silent install, tnx to https://gist.github.com/alonisser/a2c19f5362c2091ac1e7?permalink_comment_id=2264059#gistcomment-2264059
+echo iptables-persistent iptables-persistent/autosave_v4 boolean true | sudo debconf-set-selections
+echo iptables-persistent iptables-persistent/autosave_v6 boolean true | sudo debconf-set-selections
+apt-get -yq install iptables-persistent
 "$new_ip4rules"
 iptables-save > "$etc_ip4_rules" 

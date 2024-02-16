@@ -14,7 +14,7 @@ fi
 data_mnt_dir='/mnt/prod-data-drive'
 # netplan
 netplan_etc_dir='/etc/netplan'
-netplan_src_path='./cgf/00-nfs-netplan-config.yaml'
+netplan_src_path='./network-cfg/00-nfs-netplan-config.yaml'
 netplan_cfg_name='00-nfs-netplan-config.yaml'
 hostname='nfs-server'
 

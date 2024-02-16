@@ -9,5 +9,8 @@
 # /srv/nfs4/homes  gss/krb5i(rw,sync,no_subtree_check)
 #
 
-# web-app shared read-write files:
-/mnt/prod-data-drive/web-app     192.168.1.[15-16](rw,sync,no_subtree_check)
+# web-app shared read-write files
+# web-app-nd1
+/mnt/prod-data-drive/web-app     192.168.1.15(rw,sync,no_subtree_check)
+# web-app-nd2
+/mnt/prod-data-drive/web-app     192.168.1.16(rw,sync,no_subtree_check)
