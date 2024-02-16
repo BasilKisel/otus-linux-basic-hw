@@ -5,7 +5,7 @@
 
 if [ `id -u` != 0 ]
 then
-    echo "$0: One must be root to start this script."
+    echo "$0: One must be root to start this script. Bye!"
     exit 1
 fi
 

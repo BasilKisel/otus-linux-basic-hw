@@ -5,7 +5,7 @@
 
 if [ `id -u` != 0 ]
 then
-    echo "$0: One must be root to start this script."
+    echo "$0: One must be root to start this script. Bye!"
     exit 1
 fi
 
@@ -80,6 +80,12 @@ CREATE USER IF NOT EXISTS $wp_usr_name@'%' IDENTIFIED WITH 'sha256_password' BY 
 GRANT ALL PRIVILEGES ON $wp_db_name.* TO $wp_usr_name@'%'
 ;
 EOF
+
+
+# Install and run prometheus node exporter
+apt-get -yq install prometheus-node-exporter
+systemctl enable prometheus-node-exporter
+systemctl start prometheus-node-exporter
 
 
 # Fortify iptables

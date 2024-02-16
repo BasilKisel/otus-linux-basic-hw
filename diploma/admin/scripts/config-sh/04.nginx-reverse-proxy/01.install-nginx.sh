@@ -6,7 +6,7 @@
 
 if [ `id -u` != 0 ]
 then
-    echo "$0: One must be root to start this script."
+    echo "$0: One must be root to start this script. Bye!"
     exit 1
 fi
 
@@ -17,6 +17,9 @@ etc_sites_enabl='/etc/nginx/sites-enabled'
 nginx_src_proxy_conf='./nginx-cfg/nginx-web-app-upstreamed.conf'
 nginx_trg_proxy_conf="$etc_sites_avail/nginx-web-app-upstreamed.conf"
 nginx_default_conf="$etc_sites_enabl/default"
+# prometheus-nginx-exporter
+ng_exp_sysd_trg='/lib/systemd/system/prometheus-nginx-exporter.service'
+ng_exp_sysd_src='./prometheus-nginx-exporter-cfg/prometheus-nginx-exporter.service'
 # iptables
 new_ip4rules='./network-cfg/_ip4.nginx.reverse.proxy.rules.sh'
 etc_ip4_rules='/etc/iptables/rules.v4'
@@ -33,6 +36,16 @@ ln -s -f "$nginx_trg_proxy_conf" "$etc_sites_enabl/"
 [ ! -L "$nginx_default_conf" ] || rm -f "$nginx_default_conf"
 systemctl enable nginx
 systemctl restart nginx
+
+
+# Install and run prometheus node exporter
+apt-get -yq install prometheus-node-exporter prometheus-nginx-exporter
+cp "$ng_exp_sysd_src" "$ng_exp_sysd_trg"
+systemctl daemon-reload
+systemctl enable prometheus-nginx-exporter
+systemctl restart prometheus-nginx-exporter
+systemctl enable prometheus-node-exporter
+systemctl start prometheus-node-exporter
 
 
 # Fortify iptables

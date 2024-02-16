@@ -1,6 +1,6 @@
 #!/bin/bash -e
 
-# This script prepares bootstrap to become nginx reverse proxy.
+# This script prepares bootstrap to become prometheus and grafana server.
  
 
 if [ `id -u` != 0 ]
@@ -12,9 +12,9 @@ fi
 
 # netplan
 netplan_etc_dir='/etc/netplan'
-netplan_src_path='./network-cfg/00-nginx-reverse-proxy-netplan-config.yaml'
-netplan_cfg_name='00-nginx-reverse-proxy-netplan-config.yaml'
-hostname='nginx-rev-proxy'
+netplan_src_path='./network-cfg/00-prometheus-grafana-netplan-config.yaml'
+netplan_cfg_name='00-prometheus-grafana-netplan-config.yaml'
+hostname='prometheus-grafana'
 
 
 # Update network settings

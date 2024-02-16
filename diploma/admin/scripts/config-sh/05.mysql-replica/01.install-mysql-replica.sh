@@ -5,7 +5,7 @@
 
 if [ `id -u` != 0 ]
 then
-    echo "$0: One must be root to start this script."
+    echo "$0: One must be root to start this script. Bye!"
     exit 1
 fi
 
@@ -110,6 +110,12 @@ mysql << EOF
 START REPLICA;
 SHOW REPLICA STATUS\G
 EOF
+
+
+# Install and run prometheus node exporter
+apt-get -yq install prometheus-node-exporter
+systemctl enable prometheus-node-exporter
+systemctl start prometheus-node-exporter
 
 
 # Fortify iptables
