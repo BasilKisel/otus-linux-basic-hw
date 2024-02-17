@@ -1,0 +1,10 @@
+# This configuration for ELK stack VM for Otus Linux Bacis Course.
+# ELK stack is always at 192.168.1.19
+network:
+  renderer: networkd # networkd is a default for now, but who knows all posibilities
+  ethernets:
+    eth0:
+      dhcp4: true
+      addresses:
+        - 192.168.1.19/24
+  version: 2

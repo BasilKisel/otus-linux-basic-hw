@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # This script installs prometheous, and graphana.
-# It changes prometheus's config to point on nginx node at 192.168.1.18
+# It changes VM's IP4 to 192.168.1.18
 
 
 if [ `id -u` != 0 ]
@@ -11,10 +11,15 @@ then
 fi
 
 
+# grafana
 grafana_deb='./grafana/grafana_10.2.2_amd64_224190_2cad86-224190-460adc.deb'
+# prometheus
 prom_examples='/usr/share/doc/prometheus/examples'
 prom_conf_dir='/etc/prometheus'
 prom_conf_file='./prometheus-cfg/prometheus.yml'
+# iptables
+new_ip4rules='./network-cfg/_ip4.prometheus.grafana.rules.sh'
+etc_ip4_rules='/etc/iptables/rules.v4'
 
 
 if [ ! -e "$grafana_deb" ]
@@ -63,3 +68,12 @@ systemctl enable prometheus-node-exporter
 systemctl start prometheus-node-exporter
 systemctl enable grafana-server
 systemctl start grafana-server
+
+
+# Fortify iptables
+# silent install, tnx to https://gist.github.com/alonisser/a2c19f5362c2091ac1e7?permalink_comment_id=2264059#gistcomment-2264059
+echo iptables-persistent iptables-persistent/autosave_v4 boolean true | sudo debconf-set-selections
+echo iptables-persistent iptables-persistent/autosave_v6 boolean true | sudo debconf-set-selections
+apt-get -yq install iptables-persistent
+"$new_ip4rules"
+iptables-save > "$etc_ip4_rules" 
