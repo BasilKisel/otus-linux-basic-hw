@@ -1,6 +1,7 @@
 #!/bin/bash -e
 
 # This script prepares bootstrap VM.
+# Please, consider use visudo to add lines like 'YOUR_USERNAME_HERE ALL=(ALL) NOPASSWD: ALL'
  
 
 if [ `id -u` != 0 ]

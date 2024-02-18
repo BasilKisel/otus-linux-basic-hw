@@ -22,14 +22,14 @@ filebeat.inputs:
 - type: filestream
 
   # Unique ID among all inputs, an ID is required.
-  id: nginx-reverse-proxy
+  id: apache-web-app
 
   # Change to true to enable this input configuration.
   enabled: true
 
   # Paths that should be crawled and fetched. Glob based paths.
   paths:
-    - /var/log/nginx/access.log*
+    - /var/log/apache2/access.log*
     #- c:\programdata\elasticsearch\logs\*
 
   # Exclude lines. A list of regular expressions to match. It drops the lines that are
@@ -52,7 +52,7 @@ filebeat.inputs:
   # Optional additional fields. These fields can be freely picked
   # to add additional information to the crawled log files for filtering
   #fields:
-  #  nginx: true
+  #  apache: true
   #  level: debug
   #  review: 1
 
@@ -153,7 +153,7 @@ setup.kibana:
 # ------------------------------ Logstash Output -------------------------------
 output.logstash:
   # The Logstash hosts
-  hosts: ["192.168.1.19:5400"]
+  hosts: ["192.168.1.19:5401"]
 
   # Optional SSL. By default is off.
   # List of root certificates for HTTPS server verifications
