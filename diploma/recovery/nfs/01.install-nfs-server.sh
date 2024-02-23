@@ -60,6 +60,7 @@ then
     done
 fi
 cp "$new_exports" "$etc_exports"
+chmod ugo+r "$etc_exports"
 exportfs -ar
 systemctl enable nfs-server
 systemctl restart nfs-server
