@@ -76,7 +76,7 @@
     1. Подключиться по ssh к "bootstrap";
     2. Скопировать каталог скриптов "web-app"
     3. Зайти в каталог на ВМ;
-    4. Выполнить ` . __make_executable.sh; ( sudo ./00.prepare-vm-web-app-nd1.sh && sudo ./01.install-web-app.sh ) >> ./install.log `;
+    4. Выполнить ` . __make_executable.sh; ( sudo ./00.prepare-vm-nginx-reverse-proxy.sh && sudo ./01.install-nginx.sh ) >> ./install.log `;
     5. Оборвать ssh соединение с "bootstrap".
 3. Проверить работу веб-приложения:
     1. Зайти в браузере на адрес http://192.168.1.17 - веб приложение должно отобразить начальную страницу;
