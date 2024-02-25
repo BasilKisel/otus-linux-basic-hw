@@ -74,6 +74,11 @@ EOF
 # These DBs cannot be restored at replica:
 # 'mysql','information_schema','performance_schema','sys'
 
+# Many tnx to https://mysqldba.blogspot.com/2023/02/error-3546-hy000-at-line-24.html
+mysql <<EOF
+RESET MASTER;
+EOF
+
 # https://dev.mysql.com/doc/refman/8.0/en/mysqldump.html#mysqldump-replication-options
 mysql --user="$bcp_usr_name" \
       --password="$bcp_usr_pass" \

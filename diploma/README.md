@@ -264,6 +264,9 @@ PuTTY использует закрытые ключи для авторизац
             * elasticsearch_8.9.1_amd64-224190-509cdd.deb
             * kibana_8.9.1_amd64-224190-c09868.deb
             * logstash_8.9.1_amd64-224190-e7a1b1.deb
+    * web-app/
+        * docker-images/
+            * php-7.2-apache.tar
 
 
 # <a name="test-env"></a> Тестовый стенд
